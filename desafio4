@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class DesembaralharString {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int N = scanner.nextInt(); // Ler o valor de N
+
+        scanner.nextLine(); // Consumir a quebra de linha após o valor de N
+
+        for (int i = 0; i < N; i++) {
+            String linha = scanner.nextLine(); // Ler a linha de entrada contendo a frase embaralhada
+
+            String decifrada = desembaralharString(linha);
+
+            System.out.println(decifrada);
+        }
+
+        scanner.close();
+    }
+
+    private static String desembaralharString(String linha) {
+        int meio = linha.length() / 2;
+        StringBuilder decifrada = new StringBuilder();
+
+        // Percorrer a metade direita da frase embaralhada e concatenar os caracteres na nova string
+        for (int i = meio - 1; i >= 0; i--) {
+            decifrada.append(linha.charAt(i));
+        }
+
+        // Percorrer a metade esquerda da frase embaralhada e concatenar os caracteres na nova string
+        for (int i = linha.length() - 1; i >= meio; i--) {
+            decifrada.append(linha.charAt(i));
+        }
+
+        return decifrada.toString();
+    }
+}
